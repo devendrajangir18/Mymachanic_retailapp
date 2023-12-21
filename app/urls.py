@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django.urls import path
 from app import views
+from .views import RegistrationView
 
 urlpatterns = [
     path('', views.home),
@@ -13,6 +14,7 @@ urlpatterns = [
     path('changepassword/', views.change_password, name='changepassword'),
     path('mobile/', views.mobile, name='mobile'),
     path('login/', views.login, name='login'),
-    path('registration', views.customerregistration, name='customerregistration'),
+    path('register', RegistrationView.as_view(), name='register'),
+    # path('registration', views.customerregistration, name='customerregistration'),
     path('checkout/', views.checkout, name='checkout'),
 ]

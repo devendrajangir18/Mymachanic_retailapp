@@ -2,7 +2,7 @@ from django.contrib import admin
 from app.models import *
 
 admin.site.register(Profile)
-admin.site.register(Register)
+# admin.site.register(Register)
 
 # Register your models here.
 # username = godeven
