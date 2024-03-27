@@ -27,8 +27,8 @@ def profile(request):
         city = request.POST.get('city')
         state = request.POST.get('state')
         pin = int(request.POST.get('pin'))
-        contact = profile(name= name, address= address, address2= address2, city = city, state = state, pin= pin)
-        contact.save()
+        profile = profile(name= name, address= address, address2= address2, city = city, state = state, pin= pin)
+        profile.save()
         messages.success(request, 'Your message has been sent')
     
     return render(request, 'app/profile.html')
@@ -46,8 +46,10 @@ def mobile(request):
  return render(request, 'app/mobile.html')
 
    
-def login(request):
-    if request.method=="POST":
+def auth_login(request):
+    print("dfd")
+    print(request.method)
+    if request.method == "POST":
         username = request.POST.get('username')
         password = request.POST.get('password')
         print(username, password)
@@ -56,8 +58,9 @@ def login(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             # A backend authenticated the credentials
-            login(request, user)
-            return redirect('/app/home.html')
+            print("jkdfiuod")
+            login(request,user)
+            return redirect('/')
         else:
             # No backend authenticated the credentials
             return render(request, 'app/login.html')
